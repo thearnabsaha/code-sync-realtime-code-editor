@@ -2,13 +2,19 @@
 import express from 'express'
 import http from 'http'
 const app = express()
-// const path = require('path')
+import path from 'path'
 const port = process.env.PORT || 3001
 const server = http.createServer(app)
 
 import {Server} from 'socket.io'
 import ACTIONS from './src/utils/Actions.js'
 const io = new Server(server)
+
+app.use(express.static('build'));
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, 'build',"dist",'index.html'));
+});
+
 const userSocketMap={}
 const getAllClients=(roomId)=>{
     //map
@@ -54,5 +60,4 @@ io.on("connection",(socket)=>{
     })
 })
 
-app.get('/' , (req , res)=>{res.send("hi")})
 server.listen(port , ()=> console.log('> Server is up and running on port : ' + port))
