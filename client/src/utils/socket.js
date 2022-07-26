@@ -7,5 +7,5 @@ export const initSocket = async () => {
         timeout: 10000,
         transports: ['websocket'],
     };
-    return io("https://2deb-202-142-80-29.ngrok.io", options);
+    return io("https://code-sync-backend.herokuapp.com", options);
 };
