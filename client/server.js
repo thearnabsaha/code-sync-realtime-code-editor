@@ -10,16 +10,16 @@ import {Server} from 'socket.io'
 import ACTIONS from './src/utils/Actions.js'
 const io = new Server(server)
 
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static('build'));
-console.log(__dirname);
-app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-    // res.sendFile("./dist/index.html")
-});
+// import path from 'path';
+// import { fileURLToPath } from 'url';
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+// app.use(express.static('build'));
+// console.log(__dirname);
+// app.use((req, res, next) => {
+//     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+//     // res.sendFile("./dist/index.html")
+// });
 
 
 

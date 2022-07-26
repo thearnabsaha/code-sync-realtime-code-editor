@@ -7,5 +7,6 @@ export const initSocket = async () => {
         timeout: 10000,
         transports: ['websocket'],
     };
-    return io("http://localhost:3001", options);
+    return io("https://2deb-202-142-80-29.ngrok.io", options);
+    // return io("http://localhost:3001", options);
 };
