@@ -7,7 +7,7 @@ const port = process.env.PORT || 3001
 const server = http.createServer(app)
 
 import {Server} from 'socket.io'
-import ACTIONS from './src/utils/Actions.js'
+import ACTIONS from './utils/Actions.js'
 const io = new Server(server)
 const userSocketMap={}
 const getAllClients=(roomId)=>{
