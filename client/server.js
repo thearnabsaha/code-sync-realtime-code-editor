@@ -2,7 +2,7 @@
 import express from 'express'
 import http from 'http'
 const app = express()
-import path from 'path'
+// import path from 'path'
 const port = process.env.PORT || 3001
 const server = http.createServer(app)
 
@@ -10,10 +10,20 @@ import {Server} from 'socket.io'
 import ACTIONS from './src/utils/Actions.js'
 const io = new Server(server)
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(express.static('build'));
+console.log(__dirname);
 app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, 'build',"dist",'index.html'));
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    // res.sendFile("./dist/index.html")
 });
+
+
+
+
 
 const userSocketMap={}
 const getAllClients=(roomId)=>{
