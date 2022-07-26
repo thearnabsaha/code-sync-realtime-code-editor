@@ -19,6 +19,7 @@ import {Navigate, useLocation,useNavigate, useParams} from 'react-router-dom'
 
 const Room = () => {
   const socketRef=useRef(null)
+  const codeRef =useRef(null)
   const {roomId}=useParams()
   const [roomies, setRoomies] = useState([])
   const location=useLocation()
@@ -27,7 +28,7 @@ const Room = () => {
     return <Navigate to="/" />
   }
   const editorRef =useRef(null)
-  let code;
+  // let code;
   useEffect(() => {
     async function init(){
       editorRef.current = Codemirror.fromTextArea(document.getElementById("realTimeEditor"),{
@@ -39,7 +40,8 @@ const Room = () => {
       })
       editorRef.current.on("change",(instance,changes)=>{
         const {origin}=changes
-        code=instance.getValue()
+        const code=instance.getValue()
+        codeRef.current=code
         if(origin!=="setValue"){
           socketRef.current.emit(ACTIONS.CODE_CHANGE,{
             roomId,
@@ -48,7 +50,6 @@ const Room = () => {
         }
       })
     }
-
     
     async function init2(){
       socketRef.current = await initSocket()
@@ -68,7 +69,7 @@ const Room = () => {
       socketRef.current.on(ACTIONS.JOINED,(e)=>{
         toast.success(`${e.username} joined the Room!`)
         setRoomies(e.clients)
-        socketRef.current.emit(ACTIONS.SYNC_CODE,{code})
+        socketRef.current.emit(ACTIONS.SYNC_CODE,{code: codeRef.current,socketId:e.socketId})
       })
       
       // listening for disconneted
