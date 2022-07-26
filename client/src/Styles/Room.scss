@@ -1,0 +1,76 @@
+@import "variables";
+//? ################################## Room Page Styling #####################################################
+#room{
+    display: flex;
+    height: 100vh;
+    .right{
+        width: 20vw;
+        padding: 2rem 5rem;
+        background-color: $color-bg;
+        img{
+            width: 20rem;
+        }
+        h3{
+            font-size: 2rem;
+            color: $color-white;
+            padding-top: 1rem;
+        }
+        .roomies{
+            margin: 3rem 0rem;
+            overflow-y: auto;
+            display: flex;
+            height: 68vh;
+            justify-content: center;
+            flex-wrap: wrap;
+            .roomBox{
+                display: flex;
+                margin: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            h2{
+                font-size: 1.2rem;
+                color: $color-white;
+                padding-top: 1rem;
+            }
+            span{
+                font-size: 2rem;
+            }
+        }
+        button{
+            font-size: 1.5rem;
+            color: $color-bg;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            padding: .2rem 1rem;
+            display: block;
+            margin-top: 1rem;
+            border-radius: .3rem;
+            cursor: pointer;
+            transition: all ease-in-out .3s;
+            &:hover{
+                background-color: #aaa;
+            }
+        }
+        .copy{
+            background-color: $color-primary;
+            &:hover{
+                background-color: $color-primary-variant;
+            }
+        }
+    }
+    .left{
+        width: 80vw;
+    }
+    .CodeMirror{
+        height: 100vh;
+    }
+    .CodeMirror-line span,.CodeMirror-linenumber{
+        font-size: 20px;
+    } 
+    .toaster{
+        font-size: 2rem;
+    }
+
+}
