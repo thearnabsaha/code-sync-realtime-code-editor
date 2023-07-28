@@ -7,5 +7,6 @@ export const initSocket = async () => {
         timeout: 10000,
         transports: ['websocket'],
     };
-    return io("https://code-sync-backend.herokuapp.com", options);
+    return io("https://code-editor-backend-production.up.railway.app/", options);
+    // return io("https://code-sync-backend.herokuapp.com", options);
 };
